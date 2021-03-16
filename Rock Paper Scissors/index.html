@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Rock Paper Scissors
+    </title>
+</head>
+<body>
+    <script>
+        function computerPlay() {
+            let rps = Math.floor(Math.random() * 4);
+            let rock = "rock";
+            let paper = "paper";
+            let scissors = "scissors";
+            if (rps === 0) {       // rock = 0
+                return rock;
+            } else if (rps === 1) {      // paper = 1
+                return paper;
+            } else {                    // scissors = 2
+                return scissors;
+            }
+        }
+
+        function playRound(playerSelection, computerSelection) {
+            let lose = "You Lose! ";
+            let win = "You Win! ";
+            let draw = "Draw!";
+            playerSelection.toLowerCase();
+            if ((playerSelection == "rock") && (computerSelection == "paper")) {
+                console.log(computerSelection + " beats " + playerSelection);
+                return lose;
+            } else if ((playerSelection == "rock") && (computerSelection == "scissor")) {
+                console.log(playerSelection + " beats " + computerSelection);
+                return win;
+            } else if (playerSelection == computerSelection) {
+                return draw;
+            } else if ((playerSelection == "paper") && (computerSelection == "rock")) {
+                console.log(playerSelection + " beats " + computerSelection);
+                return win;
+            } else if ((playerSelection == "paper") && (computerSelection == "scissor")) {
+                console.log(computerSelection + " beats " + playerSelection);
+                return lose;
+            } else if ((playerSelection == "scissor") && (computerSelection == "paper")) {
+                console.log(playerSelection + " beats " + computerSelection);
+                return win;
+            } else {
+                console.log(computerSelection + " beats " + playerSelection);
+                return lose;
+                }
+            }
+        
+        function game() {
+            for(let i = 0; i < 5; i++) {
+                let player = window.prompt("Choose Rock, Paper, or Scissors");
+                let cpu = computerPlay();
+                console.log(playRound(player, cpu))
+            }
+        }
+
+        game();
+        
+</script>
+</body>
+</html>
